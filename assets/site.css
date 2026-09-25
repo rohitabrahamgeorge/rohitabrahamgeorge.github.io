@@ -21,7 +21,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .eyebrow { color: var(--accent); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 16px; }
 h1 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(44px, 7vw, 88px); line-height: .98; letter-spacing: -.01em; margin: 0 0 22px; max-width: 920px; }
 h1 em { color: var(--accent); }
-h2 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 4vw, 44px); line-height: 1.02; margin: 0; }
+h2 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(48px, 6.4vw, 80px); line-height: 1.02; margin: 0; }
 h3 { font-size: 18px; font-weight: 600; letter-spacing: -.01em; margin: 0; }
 .lede { color: var(--muted); font-size: 18px; max-width: 640px; margin: 0; }
 .hero { padding: 72px 0 80px; }
@@ -109,6 +109,7 @@ footer a:hover { color: var(--ink); }
 .visual:hover img { transform: scale(1.015); }
 .repos:has(> .repo:only-child) { grid-template-columns: 1fr; }
 @media (max-width: 900px) { .visual { border-right: 0; border-bottom: 1px solid var(--line); } }
-.subhead { font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; display: flex; align-items: center; gap: 12px; }
+.subhead { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.05; letter-spacing: -.01em; color: var(--ink); margin: 0 0 22px; display: flex; align-items: center; gap: 18px; }
+.subhead::before { content: ""; flex: 0 0 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgba(200,241,105,.16); }
 .subhead::after { content: ""; flex: 1; height: 1px; background: var(--line); }
-.project + .subhead { margin-top: 44px; }
+.project + .subhead { margin-top: 64px; }
