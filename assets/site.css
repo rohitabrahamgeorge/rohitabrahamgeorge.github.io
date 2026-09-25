@@ -109,3 +109,6 @@ footer a:hover { color: var(--ink); }
 .visual:hover img { transform: scale(1.015); }
 .repos:has(> .repo:only-child) { grid-template-columns: 1fr; }
 @media (max-width: 900px) { .visual { border-right: 0; border-bottom: 1px solid var(--line); } }
+.subhead { font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; display: flex; align-items: center; gap: 12px; }
+.subhead::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.project + .subhead { margin-top: 44px; }
