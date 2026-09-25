@@ -102,3 +102,10 @@ footer a:hover { color: var(--ink); }
   .preview .open span { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .screen iframe { transition: none; } }
+
+/* Static visual in place of a live preview */
+.visual { display: flex; align-items: center; background: #FBF8F2; border-right: 1px solid var(--line); overflow: hidden; }
+.visual img { display: block; width: 100%; height: auto; transition: transform .5s ease; }
+.visual:hover img { transform: scale(1.015); }
+.repos:has(> .repo:only-child) { grid-template-columns: 1fr; }
+@media (max-width: 900px) { .visual { border-right: 0; border-bottom: 1px solid var(--line); } }

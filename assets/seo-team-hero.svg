@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="SEO Content Team: name a competitor and eleven Claude skills plan, write, design, QA, interlink, track and optimize a full comparison cluster, a pillar page linked both ways to four spokes.">
+  <title>SEO Content Team: a full SEO content team, as Claude skills</title>
+  <defs>
+    <linearGradient id="hub" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EE8F4F"/><stop offset="1" stop-color="#D2652A"/>
+    </linearGradient>
+    <linearGradient id="spark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E4793A" stop-opacity=".28"/><stop offset="1" stop-color="#E4793A" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#7a3a10" flood-opacity=".14"/>
+    </filter>
+    <style>
+      .serif { font-family: Georgia, "Times New Roman", serif; }
+      .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .ink { fill: #2B2B2B; } .muted { fill: #7A746B; } .accent { fill: #D2652A; }
+
+      /* Pipeline: a highlight walks down the seven stages */
+      .row-bg { opacity: 0; animation: step 10.5s infinite; }
+      .row-num { fill: #EFE8DC; animation: numfill 10.5s infinite; }
+      .row-n { fill: #8A8277; animation: numtext 10.5s infinite; }
+      .r2 { animation-delay: 1.5s; } .r3 { animation-delay: 3s; } .r4 { animation-delay: 4.5s; }
+      .r5 { animation-delay: 6s; } .r6 { animation-delay: 7.5s; } .r7 { animation-delay: 9s; }
+      @keyframes step { 0%, 13% { opacity: 1; } 15%, 100% { opacity: 0; } }
+      @keyframes numfill { 0%, 13% { fill: #D2652A; } 15%, 100% { fill: #EFE8DC; } }
+      @keyframes numtext { 0%, 13% { fill: #FFFFFF; } 15%, 100% { fill: #8A8277; } }
+
+      /* Cluster: links flow, hub pulses, spokes breathe */
+      .link { stroke: #E4793A; stroke-width: 2.2; stroke-dasharray: 6 8; fill: none; animation: flow 1.6s linear infinite; }
+      @keyframes flow { to { stroke-dashoffset: -28; } }
+      .pulse { fill: none; stroke: #E4793A; stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: pulse 3s ease-out infinite; }
+      .pulse.b { animation-delay: 1.5s; }
+      @keyframes pulse { 0% { transform: scale(1); opacity: .55; } 100% { transform: scale(1.9); opacity: 0; } }
+      .spoke { transform-box: fill-box; transform-origin: center; animation: bob 6s ease-in-out infinite; }
+      .s2 { animation-delay: -1.5s; } .s3 { animation-delay: -3s; } .s4 { animation-delay: -4.5s; }
+      @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+      /* 15-day tracking: the line draws, then holds */
+      .trend { fill: none; stroke: #D2652A; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 420; stroke-dashoffset: 420; animation: draw 10.5s ease-in-out infinite; }
+      .trend-fill { opacity: 0; animation: fadefill 10.5s ease-in-out infinite; }
+      @keyframes draw { 0% { stroke-dashoffset: 420; } 40%, 90% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 420; } }
+      @keyframes fadefill { 0%, 25% { opacity: 0; } 45%, 88% { opacity: 1; } 100% { opacity: 0; } }
+      .caret { animation: blink 1s steps(1) infinite; }
+      @keyframes blink { 50% { opacity: 0; } }
+
+      @media (prefers-reduced-motion: reduce) {
+        .row-bg, .row-num, .row-n, .link, .pulse, .spoke, .trend, .trend-fill, .caret { animation: none; }
+        .r1.row-bg { opacity: 1; } .trend { stroke-dashoffset: 0; } .trend-fill { opacity: 1; }
+      }
+    </style>
+  </defs>
+
+  <!-- Window -->
+  <rect x="1" y="1" width="1198" height="673" rx="18" fill="#FBF8F2" stroke="#E4DDD0" stroke-width="2"/>
+  <path d="M1 19 Q1 1 19 1 H1181 Q1199 1 1199 19 V56 H1 Z" fill="#F4F0E8"/>
+  <line x1="1" y1="56" x2="1199" y2="56" stroke="#E4DDD0" stroke-width="2"/>
+  <circle cx="30" cy="29" r="7" fill="#FF5F57"/><circle cx="54" cy="29" r="7" fill="#FEBC2E"/><circle cx="78" cy="29" r="7" fill="#28C840"/>
+  <text x="600" y="35" text-anchor="middle" class="mono muted" font-size="14">seo-content-team · 11 Claude skills</text>
+
+  <!-- Left: headline -->
+  <text x="64" y="112" class="sans accent" font-size="13" font-weight="600" letter-spacing="2.2">CLAUDE SKILLS · BOTTOM-OF-FUNNEL SEO</text>
+  <text x="62" y="170" class="serif ink" font-size="56">SEO Content Team</text>
+  <text x="64" y="208" class="sans muted" font-size="19">Name one competitor. Get a full comparison cluster,</text>
+  <text x="64" y="234" class="sans muted" font-size="19">planned, written, checked, linked and tracked.</text>
+
+  <!-- Input prompt -->
+  <rect x="64" y="258" width="440" height="40" rx="9" fill="#FFFFFF" stroke="#E4DDD0" stroke-width="1.5"/>
+  <text x="82" y="283" class="mono" font-size="14"><tspan class="accent">›</tspan><tspan class="ink"> build a cluster for </tspan><tspan class="accent">"us vs Mixpanel"</tspan></text>
+  <rect class="caret" x="410" y="269" width="8" height="18" rx="1" fill="#D2652A"/>
+
+  <!-- Left: pipeline -->
+  <g class="sans">
+    <g transform="translate(64 314)">
+      <rect class="row-bg r1" width="440" height="38" rx="9" fill="#FCE9DC"/>
+      <circle class="row-num r1" cx="21" cy="19" r="12"/><text class="row-n r1" x="21" y="24" text-anchor="middle" font-size="12" font-weight="700">1</text>
+      <text x="44" y="24" class="ink" font-size="16" font-weight="600">Plan</text><text x="430" y="24" text-anchor="end" class="mono muted" font-size="12.5">cluster-planner</text>
+    </g>
+    <g transform="translate(64 356)">
+      <rect class="row-bg r2" width="440" height="38" rx="9" fill="#FCE9DC"/>
+      <circle class="row-num r2" cx="21" cy="19" r="12"/><text class="row-n r2" x="21" y="24" text-anchor="middle" font-size="12" font-weight="700">2</text>
+      <text x="44" y="24" class="ink" font-size="16" font-weight="600">Write</text><text x="430" y="24" text-anchor="end" class="mono muted" font-size="12.5">cluster-writer</text>
+    </g>
+    <g transform="translate(64 398)">
+      <rect class="row-bg r3" width="440" height="38" rx="9" fill="#FCE9DC"/>
+      <circle class="row-num r3" cx="21" cy="19" r="12"/><text class="row-n r3" x="21" y="24" text-anchor="middle" font-size="12" font-weight="700">3</text>
+      <text x="44" y="24" class="ink" font-size="16" font-weight="600">Design</text><text x="430" y="24" text-anchor="end" class="mono muted" font-size="12.5">cluster-visual-designer</text>
+    </g>
+    <g transform="translate(64 440)">
+      <rect class="row-bg r4" width="440" height="38" rx="9" fill="#FCE9DC"/>
+      <circle class="row-num r4" cx="21" cy="19" r="12"/><text class="row-n r4" x="21" y="24" text-anchor="middle" font-size="12" font-weight="700">4</text>
+      <text x="44" y="24" class="ink" font-size="16" font-weight="600">Quality check</text><text x="430" y="24" text-anchor="end" class="mono muted" font-size="12.5">cluster-quality-checker</text>
+    </g>
+    <g transform="translate(64 482)">
+      <rect class="row-bg r5" width="440" height="38" rx="9" fill="#FCE9DC"/>
+      <circle class="row-num r5" cx="21" cy="19" r="12"/><text class="row-n r5" x="21" y="24" text-anchor="middle" font-size="12" font-weight="700">5</text>
+      <text x="44" y="24" class="ink" font-size="16" font-weight="600">Interlink</text><text x="430" y="24" text-anchor="end" class="mono muted" font-size="12.5">cluster-link-validator</text>
+    </g>
+    <g transform="translate(64 524)">
+      <rect class="row-bg r6" width="440" height="38" rx="9" fill="#FCE9DC"/>
+      <circle class="row-num r6" cx="21" cy="19" r="12"/><text class="row-n r6" x="21" y="24" text-anchor="middle" font-size="12" font-weight="700">6</text>
+      <text x="44" y="24" class="ink" font-size="16" font-weight="600">Track at 15 days</text><text x="430" y="24" text-anchor="end" class="mono muted" font-size="12.5">cluster-performance-tracker</text>
+    </g>
+    <g transform="translate(64 566)">
+      <rect class="row-bg r7" width="440" height="38" rx="9" fill="#FCE9DC"/>
+      <circle class="row-num r7" cx="21" cy="19" r="12"/><text class="row-n r7" x="21" y="24" text-anchor="middle" font-size="12" font-weight="700">7</text>
+      <text x="44" y="24" class="ink" font-size="16" font-weight="600">Optimize</text><text x="430" y="24" text-anchor="end" class="mono muted" font-size="12.5">cluster-performance-optimizer</text>
+    </g>
+  </g>
+  <text x="64" y="632" class="sans muted" font-size="13.5">Run end to end by <tspan class="mono ink">cluster-orchestrator</tspan>. Plus</text>
+  <text x="64" y="652" class="sans muted" font-size="13.5"><tspan class="mono ink">seo-blog-writer</tspan>, <tspan class="mono ink">seo-coach</tspan> and <tspan class="mono ink">blog-manager-sop</tspan>.</text>
+
+  <!-- Right: the cluster -->
+  <rect x="560" y="84" width="600" height="566" rx="16" fill="#FFFFFF" stroke="#E4DDD0" stroke-width="1.5"/>
+  <text x="590" y="120" class="sans accent" font-size="12.5" font-weight="600" letter-spacing="2">THE OUTPUT · ONE CLUSTER, LINKED BOTH WAYS</text>
+
+  <!-- links (hub 860,318) -->
+  <path class="link" d="M860 318 L680 196"/>
+  <path class="link" d="M860 318 L1040 196"/>
+  <path class="link" d="M860 318 L1040 440"/>
+  <path class="link" d="M860 318 L680 440"/>
+  <!-- packets travelling out and back -->
+  <circle r="4.5" fill="#D2652A"><animateMotion dur="3.2s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="linear" path="M860 318 L680 196"/></circle>
+  <circle r="4.5" fill="#D2652A"><animateMotion dur="3.2s" begin="-.8s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="linear" path="M860 318 L1040 196"/></circle>
+  <circle r="4.5" fill="#D2652A"><animateMotion dur="3.2s" begin="-1.6s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="linear" path="M860 318 L1040 440"/></circle>
+  <circle r="4.5" fill="#D2652A"><animateMotion dur="3.2s" begin="-2.4s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="linear" path="M860 318 L680 440"/></circle>
+
+  <!-- spokes -->
+  <g class="sans" filter="url(#soft)">
+    <g class="spoke s1"><rect x="592" y="172" width="176" height="48" rx="11" fill="#FBF8F2" stroke="#E9C7AE" stroke-width="1.5"/><text x="680" y="194" text-anchor="middle" class="ink" font-size="14.5" font-weight="600">Alternatives</text><text x="680" y="211" text-anchor="middle" class="muted" font-size="11.5">listicle</text></g>
+    <g class="spoke s2"><rect x="952" y="172" width="176" height="48" rx="11" fill="#FBF8F2" stroke="#E9C7AE" stroke-width="1.5"/><text x="1040" y="194" text-anchor="middle" class="ink" font-size="14.5" font-weight="600">Migration guide</text><text x="1040" y="211" text-anchor="middle" class="muted" font-size="11.5">step by step</text></g>
+    <g class="spoke s3"><rect x="952" y="416" width="176" height="48" rx="11" fill="#FBF8F2" stroke="#E9C7AE" stroke-width="1.5"/><text x="1040" y="438" text-anchor="middle" class="ink" font-size="14.5" font-weight="600">Customer stories</text><text x="1040" y="455" text-anchor="middle" class="muted" font-size="11.5">proof</text></g>
+    <g class="spoke s4"><rect x="592" y="416" width="176" height="48" rx="11" fill="#FBF8F2" stroke="#E9C7AE" stroke-width="1.5"/><text x="680" y="438" text-anchor="middle" class="ink" font-size="14.5" font-weight="600">Narrative post</text><text x="680" y="455" text-anchor="middle" class="muted" font-size="11.5">the why</text></g>
+  </g>
+
+  <!-- hub -->
+  <circle class="pulse" cx="860" cy="318" r="66"/>
+  <circle class="pulse b" cx="860" cy="318" r="66"/>
+  <circle cx="860" cy="318" r="66" fill="url(#hub)" filter="url(#soft)"/>
+  <text x="860" y="306" text-anchor="middle" class="sans" font-size="11" font-weight="700" letter-spacing="1.6" fill="#FFE3D0">PILLAR</text>
+  <text x="860" y="330" text-anchor="middle" class="serif" font-size="23" fill="#FFFFFF">You vs Them</text>
+  <text x="860" y="349" text-anchor="middle" class="sans" font-size="11" fill="#FFE3D0">~5,000 words · FAQ</text>
+
+  <!-- tracking strip -->
+  <line x1="590" y1="500" x2="1130" y2="500" stroke="#EFE8DC" stroke-width="1.5"/>
+  <text x="590" y="530" class="sans ink" font-size="14" font-weight="600">Search Console, every 15 days</text>
+  <text x="590" y="550" class="sans muted" font-size="12.5">Clicks, CTR and position per post</text>
+  <g transform="translate(590 560)">
+    <path class="trend-fill" d="M0 70 L0 62 C40 60 60 56 90 52 S150 50 180 40 S250 30 290 24 S360 14 400 10 S470 6 540 4 L540 70 Z" fill="url(#spark)"/>
+    <path class="trend" d="M0 62 C40 60 60 56 90 52 S150 50 180 40 S250 30 290 24 S360 14 400 10 S470 6 540 4"/>
+  </g>
+  <g class="sans">
+    <rect x="1036" y="516" width="94" height="28" rx="14" fill="#FCE9DC"/>
+    <text x="1083" y="535" text-anchor="middle" class="accent" font-size="13" font-weight="700">↑ ranking</text>
+  </g>
+</svg>
