@@ -1,0 +1,287 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Northstar running in a Notion workspace: a task board where an in-progress task with a running timer moves to Done, a new task appears from meeting notes, and a Today's focus panel ranks the most urgent, do-first and most important tasks. A sticker reads Powered by Claude.">
+  <title>Northstar: time tracking, projects and daily priorities in Notion, run by Claude</title>
+  <defs>
+    <filter id="card" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.6" flood-color="#0F0F0F" flood-opacity=".08"/>
+    </filter>
+    <filter id="lift" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#0F0F0F" flood-opacity=".16"/>
+    </filter>
+    <filter id="sticker" x="-20%" y="-40%" width="140%" height="200%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#5A2A14" flood-opacity=".28"/>
+    </filter>
+    <style>
+      .ui { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .ink { fill: #37352F; } .muted { fill: #787774; } .faint { fill: #A5A29C; }
+
+      /* The in-progress card finishes and moves to Done */
+      .mover { animation: move 10s ease-in-out infinite; }
+      @keyframes move {
+        0%, 36% { transform: translate(0, 0); opacity: 1; }
+        46%, 90% { transform: translate(188px, 0); opacity: 1; }
+        95% { transform: translate(188px, 0); opacity: 0; }
+        96% { transform: translate(0, 0); opacity: 0; }
+        100% { transform: translate(0, 0); opacity: 1; }
+      }
+      .run { animation: run 10s infinite; }
+      @keyframes run { 0%, 38% { opacity: 1; } 42%, 95% { opacity: 0; } 97%, 100% { opacity: 1; } }
+      .fin { opacity: 0; animation: fin 10s infinite; }
+      @keyframes fin { 0%, 44% { opacity: 0; } 48%, 90% { opacity: 1; } 94%, 100% { opacity: 0; } }
+      .rec { animation: rec 1s ease-in-out infinite; }
+      @keyframes rec { 50% { opacity: .25; } }
+      .timebar { stroke-dasharray: 124; stroke-dashoffset: 124; animation: timebar 10s linear infinite; }
+      @keyframes timebar { 0% { stroke-dashoffset: 110; } 38% { stroke-dashoffset: 20; } 40%, 100% { stroke-dashoffset: 20; } }
+
+      /* A task arrives from meeting notes */
+      .spawn { opacity: 0; animation: spawn 10s ease-out infinite; }
+      @keyframes spawn { 0%, 56% { opacity: 0; transform: translate(0, -10px); } 62%, 90% { opacity: 1; transform: translate(0, 0); } 95%, 100% { opacity: 0; transform: translate(0, 0); } }
+      .mi1, .mi2 { opacity: 0; animation: mi 10s ease-out infinite; }
+      .mi2 { animation-delay: .5s; }
+      @keyframes mi { 0%, 50% { opacity: 0; } 55%, 90% { opacity: 1; } 95%, 100% { opacity: 0; } }
+      .flow { stroke-dasharray: 5 6; opacity: 0; animation: flow 10s linear infinite; }
+      @keyframes flow { 0%, 54% { opacity: 0; stroke-dashoffset: 0; } 58%, 88% { opacity: 1; stroke-dashoffset: -44; } 92%, 100% { opacity: 0; } }
+
+      /* Focus panel: the top pick glows, tracked time fills */
+      .glow { animation: glow 2.4s ease-in-out infinite; }
+      @keyframes glow { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+      .fill { stroke-dasharray: 300; animation: fill 10s ease-in-out infinite; }
+      @keyframes fill { 0% { stroke-dashoffset: 150; } 45%, 100% { stroke-dashoffset: 96; } }
+
+      .wobble { transform-box: fill-box; transform-origin: center; animation: wobble 5s ease-in-out infinite; }
+      @keyframes wobble { 0%, 100% { transform: rotate(6deg); } 50% { transform: rotate(3deg) translateY(-2px); } }
+
+      @media (prefers-reduced-motion: reduce) {
+        .mover, .run, .fin, .rec, .timebar, .spawn, .mi1, .mi2, .flow, .glow, .fill, .wobble { animation: none; }
+        .spawn, .mi1, .mi2 { opacity: 1; } .wobble { transform: rotate(6deg); }
+      }
+    </style>
+  </defs>
+
+  <!-- App window -->
+  <rect x="1" y="1" width="1198" height="673" rx="14" fill="#FFFFFF" stroke="#E3E2DE" stroke-width="2"/>
+  <path d="M1 15 Q1 1 15 1 H1185 Q1199 1 1199 15 V44 H1 Z" fill="#FBFBFA"/>
+  <line x1="1" y1="44" x2="1199" y2="44" stroke="#EDEDEB" stroke-width="1.5"/>
+  <circle cx="24" cy="22.5" r="6" fill="#FF5F57"/><circle cx="44" cy="22.5" r="6" fill="#FEBC2E"/><circle cx="64" cy="22.5" r="6" fill="#28C840"/>
+  <text x="232" y="27" class="ui muted" font-size="13">Northstar HQ <tspan class="faint">/</tspan> Tasks</text>
+  <text x="1170" y="27" text-anchor="end" class="ui muted" font-size="12.5">Edited just now</text>
+
+  <!-- Sidebar -->
+  <rect x="2" y="45" width="208" height="628" fill="#F7F7F5"/>
+  <line x1="210" y1="45" x2="210" y2="673" stroke="#EDEDEB" stroke-width="1.5"/>
+  <g class="ui" font-size="13.5">
+    <g transform="translate(22 76)">
+      <circle cx="9" cy="9" r="9" fill="#37352F"/>
+      <path d="M9 2.5 L11 9 L9 15.5 L7 9 Z" fill="#FFFFFF"/><path d="M2.5 9 L9 7 L15.5 9 L9 11 Z" fill="#FFFFFF" opacity=".55"/>
+      <text x="28" y="14" class="ink" font-weight="600">Northstar HQ</text>
+    </g>
+    <rect x="12" y="110" width="186" height="30" rx="5" fill="#EAE9E6"/>
+    <text x="40" y="130" class="ink" font-weight="600">Tasks</text>
+    <text x="40" y="164" class="muted">Today's focus</text>
+    <text x="40" y="196" class="muted">Time Logs</text>
+    <text x="40" y="228" class="muted">Meeting Log</text>
+    <text x="40" y="260" class="muted">Weekly Reports</text>
+    <g fill="#9B9A97">
+      <rect x="22" y="119" width="11" height="13" rx="2"/>
+      <circle cx="27.5" cy="159" r="5.5" fill="none" stroke="#9B9A97" stroke-width="1.6"/>
+      <circle cx="27.5" cy="191" r="5.5" fill="none" stroke="#9B9A97" stroke-width="1.6"/><path d="M27.5 188 V191 H30" stroke="#9B9A97" stroke-width="1.4" fill="none"/>
+      <rect x="22" y="217" width="11" height="13" rx="2" fill="none" stroke="#9B9A97" stroke-width="1.6"/>
+      <rect x="22" y="249" width="11" height="13" rx="2" fill="none" stroke="#9B9A97" stroke-width="1.6"/>
+    </g>
+    <text x="22" y="312" class="faint" font-size="11.5" font-weight="600" letter-spacing=".6">CONNECTED</text>
+    <g transform="translate(22 326)">
+      <rect width="176" height="58" rx="8" fill="#FFFFFF" stroke="#E9E9E7"/>
+      <circle cx="18" cy="20" r="4.5" fill="#35A267"/>
+      <text x="30" y="24" class="ink" font-size="12.5" font-weight="600">Meeting notes on</text>
+      <text x="14" y="44" class="muted" font-size="11.5">Transcripts saved to Notion</text>
+    </g>
+    <g transform="translate(22 394)">
+      <rect width="176" height="58" rx="8" fill="#FFFFFF" stroke="#E9E9E7"/>
+      <circle cx="18" cy="20" r="4.5" fill="#35A267"/>
+      <text x="30" y="24" class="ink" font-size="12.5" font-weight="600">Notion connector</text>
+      <text x="14" y="44" class="muted" font-size="11.5">Linked to Claude</text>
+    </g>
+  </g>
+
+  <!-- Page header -->
+  <g class="ui">
+    <g transform="translate(232 72)">
+      <circle cx="15" cy="15" r="15" fill="#37352F"/>
+      <path d="M15 4 L18.2 15 L15 26 L11.8 15 Z" fill="#FFFFFF"/><path d="M4 15 L15 11.8 L26 15 L15 18.2 Z" fill="#FFFFFF" opacity=".55"/>
+      <text x="42" y="25" class="ink" font-size="28" font-weight="700" letter-spacing="-.4">Tasks</text>
+    </g>
+    <text x="234" y="136" class="ink" font-size="13" font-weight="600">Board</text>
+    <line x1="232" y1="146" x2="272" y2="146" stroke="#37352F" stroke-width="2"/>
+    <text x="294" y="136" class="muted" font-size="13">Today's focus</text>
+    <text x="396" y="136" class="muted" font-size="13">By project</text>
+    <text x="480" y="136" class="muted" font-size="13">Time audit</text>
+    <line x1="232" y1="147" x2="784" y2="147" stroke="#EDEDEB"/>
+  </g>
+
+  <!-- Board columns -->
+  <g class="ui" font-size="12">
+    <rect x="230" y="160" width="176" height="24" rx="4" fill="#F1F1EF"/><circle cx="242" cy="172" r="4" fill="#A5A29C"/><text x="252" y="176" class="muted" font-weight="600">Not started</text>
+    <rect x="418" y="160" width="176" height="24" rx="4" fill="#E7F0F6"/><circle cx="430" cy="172" r="4" fill="#2F7FC1"/><text x="440" y="176" fill="#28608F" font-weight="600">In progress</text>
+    <rect x="606" y="160" width="176" height="24" rx="4" fill="#E7F3EC"/><circle cx="618" cy="172" r="4" fill="#35A267"/><text x="628" y="176" fill="#2B7A4E" font-weight="600">Done</text>
+  </g>
+
+  <!-- Not started -->
+  <g class="ui" filter="url(#card)">
+    <g transform="translate(230 196)">
+      <rect width="176" height="76" rx="6" fill="#FFFFFF" stroke="#E9E9E7"/>
+      <text x="12" y="23" class="ink" font-size="13" font-weight="600">Refresh pricing page</text>
+      <rect x="12" y="34" width="26" height="18" rx="3" fill="#FADEC9"/><text x="25" y="47" text-anchor="middle" fill="#8A4A15" font-size="11" font-weight="700">P1</text>
+      <rect x="44" y="34" width="56" height="18" rx="3" fill="#F1F1EF"/><text x="72" y="47" text-anchor="middle" class="muted" font-size="11">Due Oct 3</text>
+      <text x="12" y="67" class="faint" font-size="11">Website</text>
+    </g>
+    <g transform="translate(230 280)">
+      <rect width="176" height="76" rx="6" fill="#FFFFFF" stroke="#E9E9E7"/>
+      <text x="12" y="23" class="ink" font-size="13" font-weight="600">Q4 content calendar</text>
+      <rect x="12" y="34" width="26" height="18" rx="3" fill="#E3E2E0"/><text x="25" y="47" text-anchor="middle" class="muted" font-size="11" font-weight="700">P2</text>
+      <rect x="44" y="34" width="62" height="18" rx="3" fill="#F1F1EF"/><text x="75" y="47" text-anchor="middle" class="muted" font-size="11">Due Oct 10</text>
+      <text x="12" y="67" class="faint" font-size="11">Marketing</text>
+    </g>
+    <g transform="translate(230 364)">
+      <rect width="176" height="76" rx="6" fill="#FFFFFF" stroke="#E9E9E7"/>
+      <text x="12" y="23" class="ink" font-size="13" font-weight="600">Hire video editor</text>
+      <rect x="12" y="34" width="26" height="18" rx="3" fill="#E3E2E0"/><text x="25" y="47" text-anchor="middle" class="muted" font-size="11" font-weight="700">P2</text>
+      <text x="12" y="67" class="faint" font-size="11">Ops</text>
+    </g>
+    <!-- new from meeting notes -->
+    <g class="spawn">
+      <g transform="translate(230 448)">
+        <rect width="176" height="76" rx="6" fill="#FFFFFF" stroke="#D97757" stroke-width="1.5"/>
+        <text x="12" y="23" class="ink" font-size="13" font-weight="600">Send Acme proposal</text>
+        <rect x="12" y="34" width="26" height="18" rx="3" fill="#FADEC9"/><text x="25" y="47" text-anchor="middle" fill="#8A4A15" font-size="11" font-weight="700">P1</text>
+        <rect x="44" y="34" width="50" height="18" rx="3" fill="#F1F1EF"/><text x="69" y="47" text-anchor="middle" class="muted" font-size="11">Due Fri</text>
+        <text x="12" y="67" class="faint" font-size="11">Sales · from meeting</text>
+        <rect x="128" y="-8" width="40" height="17" rx="8.5" fill="#D97757"/><text x="148" y="4" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">NEW</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- In progress -->
+  <g class="ui" filter="url(#card)">
+    <g transform="translate(418 280)">
+      <rect width="176" height="76" rx="6" fill="#FFFFFF" stroke="#E9E9E7"/>
+      <text x="12" y="23" class="ink" font-size="13" font-weight="600">Webinar follow-ups</text>
+      <rect x="12" y="34" width="26" height="18" rx="3" fill="#FFE2DD"/><text x="25" y="47" text-anchor="middle" fill="#A3321F" font-size="11" font-weight="700">P0</text>
+      <rect x="44" y="34" width="56" height="18" rx="3" fill="#FFE2DD"/><text x="72" y="47" text-anchor="middle" fill="#A3321F" font-size="11" font-weight="600">Overdue</text>
+      <text x="12" y="67" class="faint" font-size="11">Marketing · 0.75h</text>
+    </g>
+    <g transform="translate(418 364)">
+      <rect width="176" height="76" rx="6" fill="#FFFFFF" stroke="#E9E9E7"/>
+      <text x="12" y="23" class="ink" font-size="13" font-weight="600">Case study draft</text>
+      <rect x="12" y="34" width="26" height="18" rx="3" fill="#FADEC9"/><text x="25" y="47" text-anchor="middle" fill="#8A4A15" font-size="11" font-weight="700">P1</text>
+      <rect x="44" y="34" width="50" height="18" rx="3" fill="#F1F1EF"/><text x="69" y="47" text-anchor="middle" class="muted" font-size="11">Due Tue</text>
+      <text x="12" y="67" class="faint" font-size="11">Marketing · 2.0h</text>
+    </g>
+  </g>
+
+  <!-- Done -->
+  <g class="ui" filter="url(#card)">
+    <g transform="translate(606 280)">
+      <rect width="176" height="76" rx="6" fill="#FFFFFF" stroke="#E9E9E7"/>
+      <text x="12" y="23" class="muted" font-size="13" font-weight="600">Onboarding checklist</text>
+      <rect x="12" y="34" width="44" height="18" rx="3" fill="#DBEDDB"/><text x="34" y="47" text-anchor="middle" fill="#2B7A4E" font-size="11" font-weight="600">Done</text>
+      <text x="12" y="67" class="faint" font-size="11">Ops · 2.5h</text>
+    </g>
+    <g transform="translate(606 364)">
+      <rect width="176" height="76" rx="6" fill="#FFFFFF" stroke="#E9E9E7"/>
+      <text x="12" y="23" class="muted" font-size="13" font-weight="600">Sprint planning</text>
+      <rect x="12" y="34" width="44" height="18" rx="3" fill="#DBEDDB"/><text x="34" y="47" text-anchor="middle" fill="#2B7A4E" font-size="11" font-weight="600">Done</text>
+      <text x="12" y="67" class="faint" font-size="11">Ops · 1.0h</text>
+    </g>
+  </g>
+
+  <!-- The card that finishes: starts in In progress row 1, lands in Done row 1 -->
+  <g class="mover ui">
+    <g transform="translate(418 196)" filter="url(#lift)">
+      <rect width="176" height="76" rx="6" fill="#FFFFFF" stroke="#E9E9E7"/>
+      <text x="12" y="23" class="ink" font-size="13" font-weight="600">Homepage launch QA</text>
+      <rect x="12" y="34" width="26" height="18" rx="3" fill="#FFE2DD"/><text x="25" y="47" text-anchor="middle" fill="#A3321F" font-size="11" font-weight="700">P0</text>
+      <g class="run">
+        <rect x="44" y="34" width="44" height="18" rx="3" fill="#FFF3D6"/><text x="66" y="47" text-anchor="middle" fill="#8A6212" font-size="11" font-weight="600">Today</text>
+        <circle class="rec" cx="100" cy="43" r="4" fill="#E0452E"/>
+        <text x="108" y="47" fill="#A3321F" font-size="11" font-weight="600">1:24:07</text>
+        <line x1="12" y1="66" x2="136" y2="66" stroke="#EDEDEB" stroke-width="4" stroke-linecap="round"/>
+        <line class="timebar" x1="12" y1="66" x2="136" y2="66" stroke="#2F7FC1" stroke-width="4" stroke-linecap="round"/>
+      </g>
+      <g class="fin">
+        <rect x="44" y="34" width="44" height="18" rx="3" fill="#DBEDDB"/><text x="66" y="47" text-anchor="middle" fill="#2B7A4E" font-size="11" font-weight="600">Done</text>
+        <text x="12" y="67" class="faint" font-size="11">Website · 3.25h total</text>
+        <circle cx="158" cy="58" r="10" fill="#35A267"/><path d="M153.5 58 l3 3 l6 -6.5" stroke="#FFFFFF" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+  </g>
+
+  <text x="232" y="560" class="ui muted" font-size="12.5">Timers, tasks and meetings in one workspace.</text>
+  <text x="232" y="580" class="ui muted" font-size="12.5">Claude keeps it current. You just say what you're working on.</text>
+  <g class="ui" transform="translate(232 600)">
+    <rect width="252" height="32" rx="16" fill="#F7F7F5" stroke="#E9E9E7"/>
+    <text x="16" y="21" class="ink" font-size="12.5"><tspan fill="#D97757" font-weight="700">›</tspan> "Start the timer on launch QA"</text>
+  </g>
+  <g class="ui" transform="translate(494 600)">
+    <rect width="190" height="32" rx="16" fill="#F7F7F5" stroke="#E9E9E7"/>
+    <text x="16" y="21" class="ink" font-size="12.5"><tspan fill="#D97757" font-weight="700">›</tspan> "What should I do next?"</text>
+  </g>
+
+  <!-- Right: Today's focus -->
+  <g class="ui">
+    <rect x="812" y="96" width="360" height="346" rx="12" fill="#FFFFFF" stroke="#E3E2DE" filter="url(#lift)"/>
+    <text x="834" y="132" class="ink" font-size="16" font-weight="700">Today's focus</text>
+    <text x="834" y="152" class="muted" font-size="12">Ranked by importance and urgency</text>
+
+    <!-- 1 -->
+    <rect class="glow" x="824" y="166" width="336" height="68" rx="9" fill="#FFF1EE"/>
+    <circle cx="848" cy="190" r="12" fill="#E0452E"/><text x="848" y="195" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="700">1</text>
+    <text x="870" y="194" class="ink" font-size="14" font-weight="600">Webinar follow-ups</text>
+    <rect x="870" y="204" width="118" height="20" rx="10" fill="#FFE2DD"/><text x="929" y="218" text-anchor="middle" fill="#A3321F" font-size="11" font-weight="700">MOST URGENT</text>
+    <text x="996" y="218" class="muted" font-size="11.5">Overdue by 1 day</text>
+
+    <!-- 2 -->
+    <circle cx="848" cy="266" r="12" fill="#D97757"/><text x="848" y="271" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="700">2</text>
+    <text x="870" y="270" class="ink" font-size="14" font-weight="600">Homepage launch QA</text>
+    <rect x="870" y="280" width="84" height="20" rx="10" fill="#FADEC9"/><text x="912" y="294" text-anchor="middle" fill="#8A4A15" font-size="11" font-weight="700">DO FIRST</text>
+    <text x="962" y="294" class="muted" font-size="11.5">P0, due today</text>
+
+    <!-- 3 -->
+    <circle cx="848" cy="342" r="12" fill="#7B5EA7"/><text x="848" y="347" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="700">3</text>
+    <text x="870" y="346" class="ink" font-size="14" font-weight="600">Refresh pricing page</text>
+    <rect x="870" y="356" width="130" height="20" rx="10" fill="#E8DEEE"/><text x="935" y="370" text-anchor="middle" fill="#4F2E7A" font-size="11" font-weight="700">MOST IMPORTANT</text>
+    <text x="1008" y="370" class="muted" font-size="11.5">Blocks launch</text>
+
+    <line x1="834" y1="392" x2="1150" y2="392" stroke="#EDEDEB"/>
+    <text x="834" y="418" class="muted" font-size="12">Tracked today</text>
+    <text x="1150" y="418" text-anchor="end" class="ink" font-size="12" font-weight="600">5h 10m of 8h</text>
+    <line x1="834" y1="430" x2="1150" y2="430" stroke="#EDEDEB" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <line class="fill" x1="834" y1="430" x2="1150" y2="430" stroke="#37352F" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Right: from meeting notes -->
+  <g class="ui">
+    <rect x="812" y="462" width="360" height="178" rx="12" fill="#FBFBFA" stroke="#E3E2DE"/>
+    <rect x="834" y="484" width="26" height="26" rx="6" fill="#F1F1EF"/>
+    <path d="M841 491 h12 M841 497 h12 M841 503 h8" stroke="#787774" stroke-width="1.8" stroke-linecap="round"/>
+    <text x="870" y="495" class="ink" font-size="14" font-weight="700">From today's meeting notes</text>
+    <text x="870" y="512" class="muted" font-size="11.5">Client kickoff · 11:00 AM · transcript read</text>
+    <g class="mi1">
+      <rect x="834" y="528" width="16" height="16" rx="4" fill="#D97757"/><path d="M838 536 l3 3 l5 -5.5" stroke="#FFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="860" y="541" class="ink" font-size="13">Send Acme proposal <tspan class="muted" font-size="11.5">· yours, due Fri</tspan></text>
+    </g>
+    <g class="mi2">
+      <rect x="834" y="556" width="16" height="16" rx="4" fill="#D97757"/><path d="M838 564 l3 3 l5 -5.5" stroke="#FFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="860" y="569" class="ink" font-size="13">Share launch checklist <tspan class="muted" font-size="11.5">· yours</tspan></text>
+    </g>
+    <text x="834" y="608" class="muted" font-size="11.5">Only items assigned to you become tasks.</text>
+    <text x="834" y="626" class="muted" font-size="11.5">Tagged to <tspan class="ink" font-weight="600">Sales</tspan> and linked to the transcript.</text>
+  </g>
+  <path class="flow" d="M812 537 C 700 537, 520 500, 408 486" stroke="#D97757" stroke-width="2" fill="none"/>
+
+  <!-- Sticker -->
+  <g class="wobble" filter="url(#sticker)">
+    <rect x="962" y="58" width="178" height="46" rx="23" fill="#FFFFFF"/>
+    <rect x="967" y="63" width="168" height="36" rx="18" fill="#D97757"/>
+    <path d="M987 81 m0 -8 l2.2 5.8 l5.8 2.2 l-5.8 2.2 l-2.2 5.8 l-2.2 -5.8 l-5.8 -2.2 l5.8 -2.2 z" fill="#FFFFFF"/>
+    <text x="1002" y="86" class="ui" fill="#FFFFFF" font-size="14.5" font-weight="700">Powered by Claude</text>
+  </g>
+</svg>
