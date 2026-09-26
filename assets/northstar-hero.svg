@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Northstar running in a Notion workspace: a task board where an in-progress task with a running timer moves to Done, a new task appears from meeting notes, and a Today's focus panel ranks the most urgent, do-first and most important tasks. A sticker reads Powered by Claude.">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Northstar running in a Notion workspace, driven by voice: spoken commands such as Mark launch QA done move tasks on the board. a task board where an in-progress task with a running timer moves to Done, a new task appears from meeting notes, and a Today's focus panel ranks the most urgent, do-first and most important tasks. A sticker reads Powered by Claude.">
   <title>Northstar: time tracking, projects and daily priorities in Notion, run by Claude</title>
   <defs>
     <filter id="card" x="-10%" y="-10%" width="120%" height="130%">
@@ -34,12 +34,12 @@
 
       /* A task arrives from meeting notes */
       .spawn { opacity: 0; animation: spawn 10s ease-out infinite; }
-      @keyframes spawn { 0%, 56% { opacity: 0; transform: translate(0, -10px); } 62%, 90% { opacity: 1; transform: translate(0, 0); } 95%, 100% { opacity: 0; transform: translate(0, 0); } }
+      @keyframes spawn { 0%, 59% { opacity: 0; transform: translate(0, -10px); } 64%, 90% { opacity: 1; transform: translate(0, 0); } 95%, 100% { opacity: 0; transform: translate(0, 0); } }
       .mi1, .mi2 { opacity: 0; animation: mi 10s ease-out infinite; }
       .mi2 { animation-delay: .5s; }
-      @keyframes mi { 0%, 50% { opacity: 0; } 55%, 90% { opacity: 1; } 95%, 100% { opacity: 0; } }
+      @keyframes mi { 0%, 57% { opacity: 0; } 61%, 90% { opacity: 1; } 95%, 100% { opacity: 0; } }
       .flow { stroke-dasharray: 5 6; opacity: 0; animation: flow 10s linear infinite; }
-      @keyframes flow { 0%, 54% { opacity: 0; stroke-dashoffset: 0; } 58%, 88% { opacity: 1; stroke-dashoffset: -44; } 92%, 100% { opacity: 0; } }
+      @keyframes flow { 0%, 58% { opacity: 0; stroke-dashoffset: 0; } 62%, 88% { opacity: 1; stroke-dashoffset: -44; } 92%, 100% { opacity: 0; } }
 
       /* Focus panel: the top pick glows, tracked time fills */
       .glow { animation: glow 2.4s ease-in-out infinite; }
@@ -47,12 +47,32 @@
       .fill { stroke-dasharray: 300; animation: fill 10s ease-in-out infinite; }
       @keyframes fill { 0% { stroke-dashoffset: 150; } 45%, 100% { stroke-dashoffset: 96; } }
 
+
+      /* Voice: mic pulses, waveform listens, commands take turns */
+      .ring { transform-box: fill-box; transform-origin: center; animation: ring 2s ease-out infinite; }
+      .ring.b { animation-delay: 1s; }
+      @keyframes ring { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.7); opacity: 0; } }
+      .vbar { transform-box: fill-box; transform-origin: center; animation: vbar .9s ease-in-out infinite; }
+      @keyframes vbar { 0%, 100% { transform: scaleY(.25); } 50% { transform: scaleY(1); } }
+      .c1, .c2, .c3, .r1, .r2, .r3, .focusring { opacity: 0; }
+      .c1 { animation: c1 10s infinite; } .r1 { animation: r1 10s infinite; }
+      .c2 { animation: c2 10s infinite; } .r2 { animation: r2 10s infinite; }
+      .c3 { animation: c3 10s infinite; } .r3 { animation: r3 10s infinite; }
+      .focusring { animation: c3 10s infinite; }
+      @keyframes c1 { 0%, 4% { opacity: 0; } 8%, 50% { opacity: 1; } 53%, 100% { opacity: 0; } }
+      @keyframes r1 { 0%, 44% { opacity: 0; } 46%, 50% { opacity: 1; } 53%, 100% { opacity: 0; } }
+      @keyframes c2 { 0%, 53% { opacity: 0; } 56%, 73% { opacity: 1; } 76%, 100% { opacity: 0; } }
+      @keyframes r2 { 0%, 63% { opacity: 0; } 65%, 73% { opacity: 1; } 76%, 100% { opacity: 0; } }
+      @keyframes c3 { 0%, 76% { opacity: 0; } 79%, 95% { opacity: 1; } 98%, 100% { opacity: 0; } }
+      @keyframes r3 { 0%, 84% { opacity: 0; } 86%, 95% { opacity: 1; } 98%, 100% { opacity: 0; } }
+
       .wobble { transform-box: fill-box; transform-origin: center; animation: wobble 5s ease-in-out infinite; }
       @keyframes wobble { 0%, 100% { transform: rotate(6deg); } 50% { transform: rotate(3deg) translateY(-2px); } }
 
       @media (prefers-reduced-motion: reduce) {
         .mover, .run, .fin, .rec, .timebar, .spawn, .mi1, .mi2, .flow, .glow, .fill, .wobble { animation: none; }
-        .spawn, .mi1, .mi2 { opacity: 1; } .wobble { transform: rotate(6deg); }
+        .spawn, .mi1, .mi2, .c3, .r3 { opacity: 1; } .wobble { transform: rotate(6deg); }
+        .ring, .vbar, .c1, .c2, .c3, .r1, .r2, .r3, .focusring { animation: none; }
       }
     </style>
   </defs>
@@ -214,15 +234,23 @@
     </g>
   </g>
 
-  <text x="232" y="560" class="ui muted" font-size="12.5">Timers, tasks and meetings in one workspace.</text>
-  <text x="232" y="580" class="ui muted" font-size="12.5">Claude keeps it current. You just say what you're working on.</text>
-  <g class="ui" transform="translate(232 600)">
-    <rect width="252" height="32" rx="16" fill="#F7F7F5" stroke="#E9E9E7"/>
-    <text x="16" y="21" class="ink" font-size="12.5"><tspan fill="#D97757" font-weight="700">›</tspan> "Start the timer on launch QA"</text>
-  </g>
-  <g class="ui" transform="translate(494 600)">
-    <rect width="190" height="32" rx="16" fill="#F7F7F5" stroke="#E9E9E7"/>
-    <text x="16" y="21" class="ink" font-size="12.5"><tspan fill="#D97757" font-weight="700">›</tspan> "What should I do next?"</text>
+  <!-- Voice command bar: each spoken command drives the board -->
+  <g class="ui">
+    <rect x="230" y="538" width="554" height="102" rx="16" fill="#FFF6F2" stroke="#F2C9B6" stroke-width="1.5"/>
+    <circle class="ring" cx="286" cy="589" r="28" fill="none" stroke="#D97757" stroke-width="2"/>
+    <circle class="ring b" cx="286" cy="589" r="28" fill="none" stroke="#D97757" stroke-width="2"/>
+    <circle cx="286" cy="589" r="28" fill="#D97757"/>
+    <rect x="280" y="574" width="12" height="20" rx="6" fill="#FFFFFF"/>
+    <path d="M275 588 a11 11 0 0 0 22 0" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    <path d="M286 599 V605 M280.5 605 H291.5" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
+    <g fill="#D97757"><rect class="vbar" x="330" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.00s"/><rect class="vbar" x="338" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.33s"/><rect class="vbar" x="346" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.67s"/><rect class="vbar" x="354" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.10s"/><rect class="vbar" x="362" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.43s"/><rect class="vbar" x="370" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.77s"/><rect class="vbar" x="378" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.20s"/><rect class="vbar" x="386" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.53s"/><rect class="vbar" x="394" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.86s"/><rect class="vbar" x="402" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.30s"/><rect class="vbar" x="410" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.63s"/><rect class="vbar" x="418" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.06s"/><rect class="vbar" x="426" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.40s"/><rect class="vbar" x="434" y="574" width="4.5" height="30" rx="2.25" style="animation-delay:-0.73s"/></g>
+    <text x="456" y="566" fill="#C0582E" font-size="11" font-weight="700" letter-spacing="1.4">YOU SAY IT. CLAUDE MOVES IT.</text>
+    <text class="c1" x="456" y="597" fill="#37352F" font-size="18" font-weight="700">&#8220;Mark launch QA done&#8221;</text>
+    <text class="c2" x="456" y="597" fill="#37352F" font-size="18" font-weight="700">&#8220;Add tasks from my kickoff call&#8221;</text>
+    <text class="c3" x="456" y="597" fill="#37352F" font-size="18" font-weight="700">&#8220;What should I do next?&#8221;</text>
+    <text class="r1" x="456" y="621" fill="#2B7A4E" font-size="12.5" font-weight="600">&#10003; Moved to Done · 3.25h logged</text>
+    <text class="r2" x="456" y="621" fill="#2B7A4E" font-size="12.5" font-weight="600">&#10003; 2 tasks created, tagged to Sales</text>
+    <text class="r3" x="456" y="621" fill="#2B7A4E" font-size="12.5" font-weight="600">&#10003; Today&#8217;s focus ranked</text>
   </g>
 
   <!-- Right: Today's focus -->
@@ -257,6 +285,8 @@
   </g>
   <line class="fill" x1="834" y1="430" x2="1150" y2="430" stroke="#37352F" stroke-width="5" stroke-linecap="round"/>
 
+  <rect class="focusring" x="809" y="93" width="366" height="352" rx="14" fill="none" stroke="#D97757" stroke-width="3"/>
+
   <!-- Right: from meeting notes -->
   <g class="ui">
     <rect x="812" y="462" width="360" height="178" rx="12" fill="#FBFBFA" stroke="#E3E2DE"/>
@@ -279,9 +309,9 @@
 
   <!-- Sticker -->
   <g class="wobble" filter="url(#sticker)">
-    <rect x="962" y="58" width="178" height="46" rx="23" fill="#FFFFFF"/>
-    <rect x="967" y="63" width="168" height="36" rx="18" fill="#D97757"/>
-    <path d="M987 81 m0 -8 l2.2 5.8 l5.8 2.2 l-5.8 2.2 l-2.2 5.8 l-2.2 -5.8 l-5.8 -2.2 l5.8 -2.2 z" fill="#FFFFFF"/>
-    <text x="1002" y="86" class="ui" fill="#FFFFFF" font-size="14.5" font-weight="700">Powered by Claude</text>
+    <rect x="952" y="58" width="200" height="46" rx="23" fill="#FFFFFF"/>
+    <rect x="957" y="63" width="190" height="36" rx="18" fill="#D97757"/>
+    <path d="M979 81 m0 -8 l2.2 5.8 l5.8 2.2 l-5.8 2.2 l-2.2 5.8 l-2.2 -5.8 l-5.8 -2.2 l5.8 -2.2 z" fill="#FFFFFF"/>
+    <text x="995" y="86" class="ui" fill="#FFFFFF" font-size="14.5" font-weight="700">Powered by Claude</text>
   </g>
 </svg>
